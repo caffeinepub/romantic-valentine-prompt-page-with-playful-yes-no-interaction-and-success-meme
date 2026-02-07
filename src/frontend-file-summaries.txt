@@ -1,0 +1,6 @@
+{
+  "frontend/src/App.tsx": "Main Valentine's Day proposal page with Yes/No buttons, evasive No button interaction, and success state showing the meme image when Yes is clicked.",
+  "frontend/src/hooks/useEvasiveButton.ts": "Custom hook that manages the evasive button behavior, calculating random safe positions and handling pointer events for both desktop hover and touch interactions.",
+  "frontend/src/index.css": "Global styles with romantic pink-and-white OKLCH color system, custom animations, and typography configuration.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Inter font family and romantic color palette support."
+}

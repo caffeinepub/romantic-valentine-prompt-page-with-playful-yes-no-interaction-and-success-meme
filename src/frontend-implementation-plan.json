@@ -1,0 +1,114 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Valentine single-page prompt with evasive No button and success meme",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement a single-purpose Valentine prompt screen with a clear question and two prominent buttons labeled \"Yes\" and \"No\".",
+      "acceptanceCriteria": [
+        "On load, the page shows a single clear prompt asking to be the user’s Valentine.",
+        "Two buttons are visible and labeled exactly \"Yes\" and \"No\".",
+        "No other primary flows/pages are presented (single-purpose experience)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page React UI for the Valentine prompt with the question and two buttons labeled exactly \"Yes\" and \"No\". Use the shadcn-ui Button component to provide consistent, prominent button styling; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Ensure the app renders the single-purpose Valentine prompt App component (keep the experience single-page and client-side)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add an evasive interaction to the \"No\" button that repositions on hover (desktop) and on touch/pointerdown (iPad/touch) to prevent clicking while staying visible and not breaking layout.",
+      "acceptanceCriteria": [
+        "On desktop, moving the cursor onto/near the \"No\" button causes it to reposition so it cannot be clicked.",
+        "On iPad/touch devices, attempting to tap the \"No\" button (e.g., touchstart/pointerdown) causes it to reposition before a click is registered.",
+        "The \"No\" button remains visible on screen after moving (it does not disappear entirely).",
+        "The interaction does not break page layout (no overlapping unreadable text or inaccessible \"Yes\" button)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useEvasiveButtonPosition.ts",
+          "operation": "create",
+          "description": "Create a small hook/utility that computes safe in-bounds positions for the evasive \"No\" button within a containing element, with logic to avoid overlapping the \"Yes\" button area and to keep the button fully visible on common desktop and iPad viewport sizes."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the evasive behavior to the \"No\" button using pointer/mouse hover handlers for desktop and pointerdown/touchstart handlers for iPad/touch so the button repositions before a click is registered; keep layout readable and ensure the \"Yes\" button remains accessible. Use the shadcn-ui Button component for the \"No\" button UI; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "On clicking \"Yes\", transition to a success state that displays a meme image containing the exact text \"Good choice ❤\" and is clearly visible on desktop and iPad Chrome.",
+      "acceptanceCriteria": [
+        "Clicking the \"Yes\" button transitions the UI to a success state.",
+        "The success state displays the meme image.",
+        "The meme image visibly contains the exact text: \"Good choice ❤\".",
+        "After clicking \"Yes\", the user is not required to do additional steps to see the meme (it is immediately shown)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Implement client-side success state: when the user clicks \"Yes\", replace/overlay the prompt with an image render of frontend/public/assets/generated/valentine-good-choice-meme.dim_1200x1200.png and ensure the success view is sized/responsive for desktop and iPad Chrome. Use the shadcn-ui Button component for the \"Yes\" button UI; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply a cohesive romantic pink-and-white theme with consistent typography, spacing, and subtle decorative accents while keeping the layout simple and readable on iPad.",
+      "acceptanceCriteria": [
+        "The primary background and UI styling follow a pink-and-white romantic theme (no dominant non-theme colors).",
+        "The UI looks intentionally designed (consistent fonts, button styling, spacing).",
+        "The page remains readable and usable on iPad Chrome viewport sizes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global styling (or Tailwind base layer overrides) to establish a pink-and-white romantic theme, cohesive typography, spacing, and subtle decorative accents (e.g., soft heart motifs) while preserving readability on iPad-sized viewports."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend/adjust Tailwind theme tokens as needed to support the romantic pink-and-white palette and consistent typography/spacing utilities used by the single Valentine page."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply the romantic theme in the single-page layout (background, spacing, typography, decorative accents) while keeping the UI focused on the Valentine question and ensuring iPad Chrome responsiveness."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add the generated meme image as a static asset under frontend/public/assets/generated and render it directly from the frontend without backend fetching.",
+      "acceptanceCriteria": [
+        "The meme image file exists under frontend/public/assets/generated with the exact filename specified in imageRequirements.required.",
+        "The frontend references the static file path and renders the image without backend involvement.",
+        "The image loads correctly in the built app without requiring external URLs."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/valentine-good-choice-meme.dim_1200x1200.png",
+          "operation": "create",
+          "description": "Add the required generated static meme image asset with the exact filename and dimensions: frontend/public/assets/generated/valentine-good-choice-meme.dim_1200x1200.png."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Reference and render the static asset at frontend/public/assets/generated/valentine-good-choice-meme.dim_1200x1200.png directly in the success state (no backend involvement)."
+        }
+      ]
+    }
+  ]
+}

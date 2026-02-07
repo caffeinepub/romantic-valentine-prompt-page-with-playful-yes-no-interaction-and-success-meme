@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Interactive romantic-themed single-purpose web page to ask the user's girlfriend to be their Valentine, with playful Yes/No interaction and a meme shown on acceptance.",
+  "architectural_notes": [
+    "Single-page interactive HTML/CSS/JS site intended to run locally in Chrome on iPad."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Meme-style image with the text “Good choice ❤” prominently centered, romantic/funny vibe, pink/white accents (valentine-good-choice-meme.dim_1200x1200.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-romantic-valentine-prompt-ui-that-asks-the-user-s-girlfriend-to-be-the-user-s-valentine-with-two-prominent-buttons-labeled-yes-and-no",
+      "title": "Create a single-page romantic Valentine prompt UI that asks the user’s girlfriend to be the user’s Valentine, with two prominent buttons labeled \"Yes\" and \"No\".",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-no-button-avoidance-interaction-so-it-moves-away-when-the-pointer-hovers-over-it-and-also-moves-away-on-touch-interactions-to-work-on-ipad-chrome-preventing-the-user-from-clicking-it",
+      "title": "Implement the \"No\" button avoidance interaction so it moves away when the pointer hovers over it, and also moves away on touch interactions (to work on iPad Chrome), preventing the user from clicking it.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-when-the-user-clicks-yes-replace-or-overlay-the-prompt-with-a-meme-image-that-includes-the-text-good-choice-exact-text-and-ensure-the-result-is-clearly-visible-on-both-desktop-and-ipad-chrome",
+      "title": "When the user clicks \"Yes\", replace or overlay the prompt with a meme image that includes the text \"Good choice ❤\" (exact text), and ensure the result is clearly visible on both desktop and iPad Chrome.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-consistent-romantic-visual-theme-using-a-pink-and-white-color-palette-with-cohesive-typography-spacing-and-decorative-accents-e-g-subtle-hearts-while-keeping-the-layout-simple-and-focused-on-the-valentine-question",
+      "title": "Apply a consistent romantic visual theme using a pink-and-white color palette with cohesive typography, spacing, and decorative accents (e.g., subtle hearts), while keeping the layout simple and focused on the Valentine question.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-generated-meme-image-as-a-static-asset-under-frontend-public-assets-generated-and-render-it-directly-from-the-frontend-do-not-fetch-it-from-the-backend",
+      "title": "Add the generated meme image as a static asset under frontend/public/assets/generated and render it directly from the frontend (do not fetch it from the backend).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a simple romantic-themed interactive Valentine proposal web page (HTML/CSS/JS) runnable in Chrome on iPad.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement Yes/No options where the No button moves away on hover to prevent clicking, effectively forcing Yes.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "On clicking Yes, display a meme image with the text \"Good choice ❤\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Apply pink and white romantic color scheme and styling throughout the page.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Romantic Valentine prompt page with playful Yes/No interaction and success meme",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
