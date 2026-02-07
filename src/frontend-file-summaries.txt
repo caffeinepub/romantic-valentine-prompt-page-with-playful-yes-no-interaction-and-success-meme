@@ -1,6 +1,10 @@
 {
-  "frontend/src/App.tsx": "Main Valentine's Day proposal page with Yes/No buttons, evasive No button interaction, and success state showing the meme image when Yes is clicked.",
-  "frontend/src/hooks/useEvasiveButton.ts": "Custom hook that manages the evasive button behavior, calculating random safe positions and handling pointer events for both desktop hover and touch interactions.",
+  "frontend/src/App.tsx": "Main Valentine's Day proposal page with Yes/No buttons, enhanced evasive No button with touch-none/select-none classes and both onPointerDown/onTouchStart handlers for better touch device support, and success state showing meme image.",
+  "frontend/src/hooks/useEvasiveButton.ts": "Custom hook managing evasive button behavior with enhanced touch support, calculating random safe positions and handling both pointer and touch events with preventDefault/stopPropagation.",
   "frontend/src/index.css": "Global styles with romantic pink-and-white OKLCH color system, custom animations, and typography configuration.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with Inter font family and romantic color palette support."
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Inter font family and romantic color palette support.",
+  "frontend/DEPLOYMENT.md": "Comprehensive deployment guide with complete production build instructions, step-by-step deployment process, subdomain validation workflow using the validation script, troubleshooting section for common build/deploy failures, and retry guidance.",
+  "frontend/scripts/validate-icp0-subdomain.mjs": "Enhanced validation script for icp0.io subdomains with improved help text, usage examples, next steps guidance, and clear pass/fail output for the Romanticproposal subdomain.",
+  "frontend/src/config.ts": "Configuration module that loads environment settings from env.json and provides functions to create backend actors with proper agent configuration for both development and production environments.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Internet Identity authentication provider hook that manages user login/logout state, loads configuration asynchronously from config module instead of using process.env, and provides authentication context to the application."
 }

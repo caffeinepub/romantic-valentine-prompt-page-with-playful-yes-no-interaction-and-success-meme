@@ -14,9 +14,6 @@ export function useEvasiveButton() {
       return { x: 0, y: 0 };
     }
 
-    const container = containerRef.current;
-    const containerRect = container.getBoundingClientRect();
-    
     // Button dimensions (approximate)
     const buttonWidth = 180;
     const buttonHeight = 80;
@@ -42,8 +39,9 @@ export function useEvasiveButton() {
     setPosition(newPosition);
   }, [getRandomPosition]);
 
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+  const handlePointerDown = useCallback((e: React.PointerEvent | React.TouchEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     const newPosition = getRandomPosition();
     setPosition(newPosition);
   }, [getRandomPosition]);

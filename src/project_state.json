@@ -1,13 +1,16 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
+  "projectStateVersion": 11,
   "summary": "Interactive romantic-themed single-purpose web page to ask the user's girlfriend to be their Valentine, with playful Yes/No interaction and a meme shown on acceptance.",
   "architectural_notes": [
-    "Single-page interactive HTML/CSS/JS site intended to run locally in Chrome on iPad."
+    "Single-page interactive HTML/CSS/JS site intended to run locally in Chrome on iPad.",
+    "Deployment domain must be 5–50 characters and contain only letters, numbers, and hyphens (hosting provider constraints); site currently served under a *.icp0.io domain.",
+    "User requested updating the deployed icp0.io subdomain to \"Romanticproposal\" (ensure it conforms to domain rules; consider lowercasing if required by the platform)."
   ],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Meme-style image with the text “Good choice ❤” prominently centered, romantic/funny vibe, pink/white accents (valentine-good-choice-meme.dim_1200x1200.png)",
+  "known_issues": [
+    "Deployment/build failed in hosted environment; user requested a retry."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-single-page-romantic-valentine-prompt-ui-that-asks-the-user-s-girlfriend-to-be-the-user-s-valentine-with-two-prominent-buttons-labeled-yes-and-no",
@@ -48,6 +51,62 @@
         "REQ-5"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-on-the-post-acceptance-yes-clicked-success-screen-keep-the-existing-meme-image-but-change-the-success-heading-text-from-perfect-choice-to-exactly-she-said-yes-english-text-no-extra-punctuation-and-ensure-the-heading-remains-prominently-visible-above-the-meme-on-both-desktop-and-ipad-chrome",
+      "title": "On the post-acceptance (\"Yes\" clicked) success screen, keep the existing meme image but change the success heading text from “Perfect Choice! ❤️” to exactly “She said yes” (English text, no extra punctuation), and ensure the heading remains prominently visible above the meme on both desktop and iPad Chrome.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-publish-deploy-the-updated-valentine-page-so-the-heading-change-is-live-in-the-hosted-environment",
+      "title": "Publish/deploy the updated Valentine page so the heading change is live in the hosted environment.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-documented-and-repeatable-way-to-change-update-the-deployed-site-domain-the-icp0-io-subdomain-for-this-valentine-page-including-validation-against-the-platform-rules-5-50-characters-only-letters-numbers-and-hyphens-and-clear-instructions-for-how-to-redeploy-so-the-new-domain-becomes-live",
+      "title": "Add a documented and repeatable way to change/update the deployed site domain (the icp0.io subdomain) for this Valentine page, including validation against the platform rules (5–50 characters; only letters, numbers, and hyphens) and clear instructions for how to redeploy so the new domain becomes live.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-set-the-deployed-site-icp0-io-subdomain-to-exactly-romanticproposal-and-redeploy-so-the-valentine-page-is-reachable-at-https-romanticproposal-icp0-io",
+      "title": "Set the deployed site icp0.io subdomain to exactly \"Romanticproposal\" and redeploy so the Valentine page is reachable at https://Romanticproposal.icp0.io.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-the-current-hosted-environment-build-deployment-failure-fix-the-underlying-issue-frontend-build-and-or-canister-deploy-and-rerun-the-deployment-so-the-latest-valentine-page-is-successfully-published",
+      "title": "Investigate the current hosted-environment build/deployment failure, fix the underlying issue (frontend build and/or canister deploy), and rerun the deployment so the latest Valentine page is successfully published.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-deployment-output-is-reachable-at-the-intended-icp0-io-subdomain-and-matches-the-configured-domain-value-https-romanticproposal-icp0-io",
+      "title": "Ensure the deployment output is reachable at the intended icp0.io subdomain and matches the configured domain value: https://Romanticproposal.icp0.io.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-or-restore-frontend-deployment-md-so-it-contains-complete-step-by-step-production-build-and-redeploy-instructions-in-english-including-how-to-rerun-deployment-after-a-failure-and-how-to-validate-the-icp0-io-subdomain-using-the-existing-validation-script",
+      "title": "Update or restore frontend/DEPLOYMENT.md so it contains complete, step-by-step production build and redeploy instructions (in English), including how to rerun deployment after a failure and how to validate the icp0.io subdomain using the existing validation script.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -72,6 +131,24 @@
     {
       "id": "AR-4",
       "summary": "Apply pink and white romantic color scheme and styling throughout the page.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "On Yes click, keep the meme image but change the success heading text from “Perfect Choice! ❤️” to “She said yes”.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Publish/deploy the updated Valentine page after changing the success heading text.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Allow changing/updating the deployed site domain (within the hosting provider’s domain naming rules).",
       "reqIds": [],
       "status": "pending"
     }

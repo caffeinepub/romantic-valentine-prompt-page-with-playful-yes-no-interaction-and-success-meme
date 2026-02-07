@@ -2,27 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-single-page-romantic-valentine-prompt-ui-that-asks-the-user-s-girlfriend-to-be-the-user-s-valentine-with-two-prominent-buttons-labeled-yes-and-no",
-      "featureTitle": "Create a single-page romantic Valentine prompt UI that asks the user’s girlfriend to be the user’s Valentine, with two prominent buttons labeled \"Yes\" and \"No\".",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/main.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-the-no-button-avoidance-interaction-so-it-moves-away-when-the-pointer-hovers-over-it-and-also-moves-away-on-touch-interactions-to-work-on-ipad-chrome-preventing-the-user-from-clicking-it",
-      "featureTitle": "Implement the \"No\" button avoidance interaction so it moves away when the pointer hovers over it, and also moves away on touch interactions (to work on iPad Chrome), preventing the user from clicking it.",
+      "featureId": "feature-investigate-the-current-hosted-environment-build-deployment-failure-fix-the-underlying-issue-frontend-build-and-or-canister-deploy-and-rerun-the-deployment-so-the-latest-valentine-page-is-successfully-published",
+      "featureTitle": "Investigate the current hosted-environment build/deployment failure, fix the underlying issue (frontend build and/or canister deploy), and rerun the deployment so the latest Valentine page is successfully published.",
       "files": [
         "frontend/src/App.tsx"
       ],
@@ -34,13 +15,13 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-10"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-when-the-user-clicks-yes-replace-or-overlay-the-prompt-with-a-meme-image-that-includes-the-text-good-choice-exact-text-and-ensure-the-result-is-clearly-visible-on-both-desktop-and-ipad-chrome",
-      "featureTitle": "When the user clicks \"Yes\", replace or overlay the prompt with a meme image that includes the text \"Good choice ❤\" (exact text), and ensure the result is clearly visible on both desktop and iPad Chrome.",
+      "featureId": "feature-ensure-the-deployment-output-is-reachable-at-the-intended-icp0-io-subdomain-and-matches-the-configured-domain-value-https-romanticproposal-icp0-io",
+      "featureTitle": "Ensure the deployment output is reachable at the intended icp0.io subdomain and matches the configured domain value: https://Romanticproposal.icp0.io.",
       "files": [
         "frontend/src/App.tsx"
       ],
@@ -52,17 +33,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-11"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-apply-a-consistent-romantic-visual-theme-using-a-pink-and-white-color-palette-with-cohesive-typography-spacing-and-decorative-accents-e-g-subtle-hearts-while-keeping-the-layout-simple-and-focused-on-the-valentine-question",
-      "featureTitle": "Apply a consistent romantic visual theme using a pink-and-white color palette with cohesive typography, spacing, and decorative accents (e.g., subtle hearts), while keeping the layout simple and focused on the Valentine question.",
+      "featureId": "feature-update-or-restore-frontend-deployment-md-so-it-contains-complete-step-by-step-production-build-and-redeploy-instructions-in-english-including-how-to-rerun-deployment-after-a-failure-and-how-to-validate-the-icp0-io-subdomain-using-the-existing-validation-script",
+      "featureTitle": "Update or restore frontend/DEPLOYMENT.md so it contains complete, step-by-step production build and redeploy instructions (in English), including how to rerun deployment after a failure and how to validate the icp0.io subdomain using the existing validation script.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/DEPLOYMENT.md",
+        "frontend/scripts/validate-icp0-subdomain.mjs"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -72,25 +52,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-the-generated-meme-image-as-a-static-asset-under-frontend-public-assets-generated-and-render-it-directly-from-the-frontend-do-not-fetch-it-from-the-backend",
-      "featureTitle": "Add the generated meme image as a static asset under frontend/public/assets/generated and render it directly from the frontend (do not fetch it from the backend).",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
+        "REQ-12"
       ],
       "confidence": "high"
     }

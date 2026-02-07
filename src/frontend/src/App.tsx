@@ -18,7 +18,7 @@ export default function App() {
           <div className="space-y-4">
             <Heart className="w-16 h-16 mx-auto text-rose-500 fill-rose-500 animate-pulse" />
             <h1 className="text-4xl md:text-5xl font-bold text-rose-600">
-              Perfect Choice! ❤️
+              She said yes
             </h1>
           </div>
           <div className="max-w-2xl mx-auto">
@@ -69,14 +69,16 @@ export default function App() {
             <Button
               onPointerEnter={handlePointerEnter}
               onPointerDown={handlePointerDown}
+              onTouchStart={handlePointerDown}
               size="lg"
               variant="outline"
-              className="text-xl px-12 py-8 border-2 border-gray-300 text-gray-500 hover:bg-gray-50 shadow-lg rounded-full font-bold transition-none"
+              className="text-xl px-12 py-8 border-2 border-gray-300 text-gray-500 hover:bg-gray-50 shadow-lg rounded-full font-bold transition-none touch-none select-none"
               style={{
                 position: position ? 'fixed' : 'relative',
                 left: position ? `${position.x}px` : 'auto',
                 top: position ? `${position.y}px` : 'auto',
                 transform: position ? 'translate(-50%, -50%)' : 'none',
+                zIndex: position ? 50 : 'auto',
               }}
             >
               No

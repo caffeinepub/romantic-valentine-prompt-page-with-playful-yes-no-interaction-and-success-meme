@@ -1,117 +1,84 @@
 {
   "kind": "build_request",
-  "title": "Romantic Valentine prompt page with playful Yes/No interaction and success meme",
-  "priority": "normal",
+  "title": "Fix deployment failure and redeploy Valentine page",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a single-page romantic Valentine prompt UI that asks the user’s girlfriend to be the user’s Valentine, with two prominent buttons labeled \"Yes\" and \"No\".",
-      "target": "frontend",
+      "id": "REQ-10",
+      "text": "Investigate the current hosted-environment build/deployment failure, fix the underlying issue (frontend build and/or canister deploy), and rerun the deployment so the latest Valentine page is successfully published.",
+      "target": "both",
       "source": {
         "messageIds": [
           "msg-2"
         ],
         "quotes": [
-          "The page should be simple, romantic-themed, and have only one purpose: to ask her to be my Valentine.\nThere should be two options: Yes or No."
+          "Retry"
         ]
       },
       "acceptanceCriteria": [
-        "On load, the page shows a single clear prompt asking to be the user’s Valentine.",
-        "Two buttons are visible and labeled exactly \"Yes\" and \"No\".",
-        "No other primary flows/pages are presented (single-purpose experience)."
+        "A clean production build completes successfully without errors.",
+        "Deployment completes successfully in the hosted environment (no deployment failure).",
+        "The deployed site loads and functions as expected (Valentine prompt, evasive \"No\" button behavior, and the \"She said yes\" success state with the meme image)."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Implement the \"No\" button avoidance interaction so it moves away when the pointer hovers over it, and also moves away on touch interactions (to work on iPad Chrome), preventing the user from clicking it.",
+      "id": "REQ-11",
+      "text": "Ensure the deployment output is reachable at the intended icp0.io subdomain and matches the configured domain value: https://Romanticproposal.icp0.io.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-2"
         ],
         "quotes": [
-          "When she hovers her cursor over No, it should move away so she cannot click it, forcing her to click only on Yes.",
-          "... run it on my iPad using Chrome."
+          "Retry"
         ]
       },
       "acceptanceCriteria": [
-        "On desktop, moving the cursor onto/near the \"No\" button causes it to reposition so it cannot be clicked.",
-        "On iPad/touch devices, attempting to tap the \"No\" button (e.g., touchstart/pointerdown) causes it to reposition before a click is registered.",
-        "The \"No\" button remains visible on screen after moving (it does not disappear entirely).",
-        "The interaction does not break page layout (no overlapping unreadable text or inaccessible \"Yes\" button)."
+        "Visiting https://Romanticproposal.icp0.io loads the app successfully.",
+        "The page shows the Valentine prompt UI and works on both desktop and iPad Chrome (including touch interaction for the evasive \"No\" button)."
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "When the user clicks \"Yes\", replace or overlay the prompt with a meme image that includes the text \"Good choice ❤\" (exact text), and ensure the result is clearly visible on both desktop and iPad Chrome.",
+      "id": "REQ-12",
+      "text": "Update or restore frontend/DEPLOYMENT.md so it contains complete, step-by-step production build and redeploy instructions (in English), including how to rerun deployment after a failure and how to validate the icp0.io subdomain using the existing validation script.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-2"
         ],
         "quotes": [
-          "When she clicks Yes, show her a meme image telling her \"Good choice ❤\"."
+          "Retry"
         ]
       },
       "acceptanceCriteria": [
-        "Clicking the \"Yes\" button transitions the UI to a success state.",
-        "The success state displays the meme image.",
-        "The meme image visibly contains the exact text: \"Good choice ❤\".",
-        "After clicking \"Yes\", the user is not required to do additional steps to see the meme (it is immediately shown)."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Apply a consistent romantic visual theme using a pink-and-white color palette with cohesive typography, spacing, and decorative accents (e.g., subtle hearts), while keeping the layout simple and focused on the Valentine question.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "The page should be themed romantically with a pink and white color scheme"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The primary background and UI styling follow a pink-and-white romantic theme (no dominant non-theme colors).",
-        "The UI looks intentionally designed (consistent fonts, button styling, spacing).",
-        "The page remains readable and usable on iPad Chrome viewport sizes."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add the generated meme image as a static asset under frontend/public/assets/generated and render it directly from the frontend (do not fetch it from the backend).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "show her a meme image telling her \"Good choice ❤\"."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The meme image file exists under frontend/public/assets/generated with the exact filename specified in imageRequirements.required.",
-        "The frontend references the static file path and renders the image without backend involvement.",
-        "The image loads correctly in the built app without requiring external URLs."
+        "frontend/DEPLOYMENT.md contains clear, complete production build and redeploy steps.",
+        "Documentation includes a section explaining how to validate a subdomain using frontend/scripts/validate-icp0-subdomain.mjs.",
+        "Documentation includes a short troubleshooting section for common build/deploy failures and how to retry."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under the immutable frontend paths listed in SYSTEM_CONTEXT (compose existing UI components instead of editing them).",
-    "Keep the implementation fully client-side; no backend canister logic is required for this experience.",
+    "Do not edit files under frontend/src/components/ui (read-only UI components).",
+    "Do not modify any files listed under frontend.immutablePaths in SYSTEM_CONTEXT.",
+    "Keep all backend logic in the single Motoko actor (backend/main.mo); add migration code only if persistent state changes are required.",
     "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Internet Identity authentication",
-    "Any persistent storage of user actions",
-    "Multi-page navigation or additional features beyond the Valentine prompt and success meme",
-    "External image hosting or third-party APIs"
+    "Adding new Valentine interactions or changing the existing copy/layout beyond what is required to fix deployment and documentation.",
+    "Introducing new backend services, external databases, or third-party authentication providers (Internet Identity only)."
   ],
   "imageRequirements": {
-    "required": [
-      "Meme-style image with the text “Good choice ❤” prominently centered, romantic/funny vibe, pink/white accents (valentine-good-choice-meme.dim_1200x1200.png)"
-    ],
+    "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }
