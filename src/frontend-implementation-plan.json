@@ -1,72 +1,26 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Repair frontend build/config issues and document redeploy + icp0 subdomain validation",
+  "title": "Publish latest changes to production (icp0.io)",
   "requirements": [
     {
-      "id": "REQ-10",
-      "summary": "Fix frontend build issues that cause hosted deployment failures and ensure the Valentine page runs correctly after redeploy.",
+      "id": "REQ-1",
+      "summary": "Update deployment guidance/checklist to support a standard production redeploy and verification of the live romanticproposal.icp0.io site showing the latest UI (including the “She said yes” success heading).",
       "acceptanceCriteria": [
-        "A clean production build completes successfully without errors.",
-        "Deployment completes successfully in the hosted environment (no deployment failure).",
-        "The deployed site loads and functions as expected (Valentine prompt, evasive \"No\" button behavior, and the \"She said yes\" success state with the meme image)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/config.ts",
-          "operation": "create",
-          "description": "Create the missing frontend configuration module required by existing hooks (e.g., loadConfig/createActorWithConfig) so production builds no longer fail due to missing imports. Use the selected core-infrastructure component to align backend connection configuration and actor creation behavior with the template. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useInternetIdentity.ts",
-          "operation": "modify",
-          "description": "Remove build-hostile environment access (e.g., process.env usage) and read required values via the frontend build system’s supported env mechanism; keep user-facing text in English. This should prevent production build/runtime failures in hosted environments."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Harden the evasive \"No\" button behavior for touch/pointer environments (including iPad Chrome) without changing the existing copy/layout beyond what’s required (e.g., ensure pointer/touch interaction doesn’t get blocked by default browser behaviors). Also confirm the success state continues to display the meme image at frontend/public/assets/generated/valentine-good-choice-meme.dim_1200x1200.png."
-        }
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "summary": "Ensure the app is compatible with being served from the intended https://Romanticproposal.icp0.io subdomain and functions on desktop and iPad Chrome.",
-      "acceptanceCriteria": [
-        "Visiting https://Romanticproposal.icp0.io loads the app successfully.",
-        "The page shows the Valentine prompt UI and works on both desktop and iPad Chrome (including touch interaction for the evasive \"No\" button)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Verify the HTML entry point remains correct for icp0 subdomain hosting (language, mount node, and module bootstrapping) and adjust only if needed to ensure the app reliably loads when served at https://Romanticproposal.icp0.io."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Verify asset referencing and runtime behavior work when hosted at an icp0.io subdomain root (including the success-state image). Keep the Valentine prompt UI behavior intact and ensure touch interaction is supported."
-        }
-      ]
-    },
-    {
-      "id": "REQ-12",
-      "summary": "Restore/expand DEPLOYMENT.md with complete production build + redeploy steps, including retry guidance and subdomain validation script usage.",
-      "acceptanceCriteria": [
-        "frontend/DEPLOYMENT.md contains clear, complete production build and redeploy steps.",
-        "Documentation includes a section explaining how to validate a subdomain using frontend/scripts/validate-icp0-subdomain.mjs.",
-        "Documentation includes a short troubleshooting section for common build/deploy failures and how to retry."
+        "A production deployment is executed using the project’s standard deployment workflow.",
+        "https://romanticproposal.icp0.io loads successfully in a browser and displays the latest UI (including the success screen heading text \"She said yes\").",
+        "No deployment/build errors remain blocking the publish step."
       ],
       "file_operations": [
         {
           "path": "frontend/DEPLOYMENT.md",
           "operation": "modify",
-          "description": "Rewrite/expand the deployment guide in English to include: step-by-step production build instructions, step-by-step redeploy instructions, what to do after a failed deploy (retry flow), and explicit validation steps for the intended domain https://Romanticproposal.icp0.io using frontend/scripts/validate-icp0-subdomain.mjs (including example commands). Include a concise troubleshooting section for common build/deploy failures (missing env vars, build output issues, subdomain validation issues) and how to retry."
+          "description": "Expand and complete the production redeploy instructions (install/build/deploy steps) and add a post-deploy verification checklist that explicitly includes: opening https://romanticproposal.icp0.io, clicking “Yes! 💕”, and confirming the success screen heading reads “She said yes”, plus basic troubleshooting notes for common build/deploy failures. Keep changes documentation-only to avoid altering app behavior."
         },
         {
           "path": "frontend/scripts/validate-icp0-subdomain.mjs",
           "operation": "modify",
-          "description": "If needed for the documentation flow, minimally enhance script output/help text so it’s easy to validate the exact intended subdomain (Romanticproposal) and understand pass/fail results. Keep script behavior focused on validation only."
+          "description": "Align example/help text to reference the production subdomain 'romanticproposal' (lowercase) and the expected URL https://romanticproposal.icp0.io, so the standard workflow guidance matches the actual production target. No functional rule changes required beyond copy updates."
         }
       ]
     }

@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers building your Valentine's Day page for production, deploying it to the Internet Computer, and validating your custom icp0.io subdomain.
+This guide covers building your Valentine's Day proposal page for production, deploying it to the Internet Computer, and validating your custom icp0.io subdomain.
 
 ## Prerequisites
 

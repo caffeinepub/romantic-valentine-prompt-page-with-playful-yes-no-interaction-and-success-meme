@@ -2,44 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-investigate-the-current-hosted-environment-build-deployment-failure-fix-the-underlying-issue-frontend-build-and-or-canister-deploy-and-rerun-the-deployment-so-the-latest-valentine-page-is-successfully-published",
-      "featureTitle": "Investigate the current hosted-environment build/deployment failure, fix the underlying issue (frontend build and/or canister deploy), and rerun the deployment so the latest Valentine page is successfully published.",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-10"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-the-deployment-output-is-reachable-at-the-intended-icp0-io-subdomain-and-matches-the-configured-domain-value-https-romanticproposal-icp0-io",
-      "featureTitle": "Ensure the deployment output is reachable at the intended icp0.io subdomain and matches the configured domain value: https://Romanticproposal.icp0.io.",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-11"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-or-restore-frontend-deployment-md-so-it-contains-complete-step-by-step-production-build-and-redeploy-instructions-in-english-including-how-to-rerun-deployment-after-a-failure-and-how-to-validate-the-icp0-io-subdomain-using-the-existing-validation-script",
-      "featureTitle": "Update or restore frontend/DEPLOYMENT.md so it contains complete, step-by-step production build and redeploy instructions (in English), including how to rerun deployment after a failure and how to validate the icp0.io subdomain using the existing validation script.",
+      "featureId": "feature-publish-the-current-app-changes-by-redeploying-the-project-to-production-and-verify-the-live-site-is-reachable-at-https-romanticproposal-icp0-io",
+      "featureTitle": "Publish the current app changes by redeploying the project to production and verify the live site is reachable at https://romanticproposal.icp0.io.",
       "files": [
         "frontend/DEPLOYMENT.md",
         "frontend/scripts/validate-icp0-subdomain.mjs"
@@ -52,7 +16,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-12"
+        "REQ-1"
       ],
       "confidence": "high"
     }

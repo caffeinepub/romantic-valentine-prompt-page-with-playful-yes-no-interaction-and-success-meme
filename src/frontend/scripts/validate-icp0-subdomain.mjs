@@ -6,12 +6,13 @@
  * - Characters: only letters (a-z, A-Z), numbers (0-9), and hyphens (-)
  * 
  * Usage: node validate-icp0-subdomain.mjs <subdomain>
- * Example: node validate-icp0-subdomain.mjs Romanticproposal
+ * Example: node validate-icp0-subdomain.mjs romanticproposal
  */
 
 const MIN_LENGTH = 5;
 const MAX_LENGTH = 50;
 const ALLOWED_PATTERN = /^[a-zA-Z0-9-]+$/;
+const PRODUCTION_SUBDOMAIN = 'romanticproposal';
 
 function validateSubdomain(subdomain) {
   const errors = [];
@@ -59,12 +60,13 @@ function main() {
   if (args.length === 0) {
     console.error('❌ Error: No subdomain provided\n');
     console.log('Usage: node validate-icp0-subdomain.mjs <subdomain>\n');
-    console.log('Example: node validate-icp0-subdomain.mjs Romanticproposal\n');
+    console.log(`Example: node validate-icp0-subdomain.mjs ${PRODUCTION_SUBDOMAIN}\n`);
     console.log('Validation Rules:');
     console.log(`  • Length: ${MIN_LENGTH}-${MAX_LENGTH} characters`);
     console.log('  • Characters: only letters (a-z, A-Z), numbers (0-9), and hyphens (-)');
     console.log('  • No leading or trailing hyphens\n');
-    console.log('Your configured subdomain: Romanticproposal');
+    console.log(`Your configured production subdomain: ${PRODUCTION_SUBDOMAIN}`);
+    console.log(`Production URL: https://${PRODUCTION_SUBDOMAIN}.icp0.io`);
     process.exit(1);
   }
 
@@ -74,10 +76,18 @@ function main() {
   if (result.valid) {
     console.log(`✅ Valid subdomain: "${subdomain}"`);
     console.log(`\n   Your site will be accessible at: https://${subdomain}.icp0.io`);
+    
+    // Show note if validating production subdomain
+    if (subdomain.toLowerCase() === PRODUCTION_SUBDOMAIN.toLowerCase()) {
+      console.log(`\n   ℹ️  This is your configured production subdomain`);
+    }
+    
     console.log('\n✨ Next steps:');
-    console.log('   1. Deploy your canister: dfx deploy frontend');
-    console.log('   2. Configure the subdomain in your Internet Computer dashboard');
-    console.log('   3. Wait for DNS propagation (usually 10-15 minutes)');
+    console.log('   1. Build your frontend: cd frontend && pnpm run build');
+    console.log('   2. Deploy your canister: dfx deploy frontend');
+    console.log('   3. Configure the subdomain in your Internet Computer dashboard');
+    console.log('   4. Wait for DNS propagation (usually 10-15 minutes)');
+    console.log(`   5. Verify at: https://${subdomain}.icp0.io`);
     process.exit(0);
   } else {
     console.error(`❌ Invalid subdomain: "${subdomain}"\n`);
@@ -91,8 +101,9 @@ function main() {
     console.error('  • No leading or trailing hyphens');
     console.error('\nExamples of valid subdomains:');
     console.error('  • my-valentine-2026');
-    console.error('  • RomanticProposal');
+    console.error('  • romanticproposal');
     console.error('  • love4ever');
+    console.error(`\nYour production subdomain: ${PRODUCTION_SUBDOMAIN}`);
     process.exit(1);
   }
 }

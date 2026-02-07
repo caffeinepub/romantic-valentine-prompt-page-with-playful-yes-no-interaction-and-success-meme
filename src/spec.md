@@ -1,13 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the hosted-environment build/deployment failure and redeploy the Valentine page so it is reachable at the intended icp0.io subdomain, with updated deployment documentation.
+**Goal:** Redeploy the current project state to production and confirm the live site at https://romanticproposal.icp0.io reflects the latest UI.
 
 **Planned changes:**
-- Investigate and fix the underlying production build and/or canister deployment issue causing the hosted-environment deployment to fail.
-- Redeploy the latest Valentine page and confirm the deployed app loads and functions correctly (Valentine prompt, evasive “No” button, and “She said yes” state showing the meme image).
-- Ensure the deployment is reachable at https://Romanticproposal.icp0.io and matches the configured domain value.
-- Update or restore frontend/DEPLOYMENT.md with complete step-by-step production build + redeploy instructions, including how to retry after failures and how to validate the icp0.io subdomain using the existing validation script.
-- Verify the Valentine prompt UI works on desktop and iPad Chrome, including touch interaction for the evasive “No” button.
+- Execute the standard production deployment workflow to publish the latest changes.
+- Verify the production site loads successfully and shows the latest UI, including the success screen heading text “She said yes”.
+- Resolve any deployment/build errors that block publishing.
 
-**User-visible outcome:** Visiting https://Romanticproposal.icp0.io loads the Valentine page successfully and the interactive UI works as expected; deployment instructions are documented for reliable rebuild/redeploy and validation.
+**User-visible outcome:** The production site at https://romanticproposal.icp0.io is reachable in a browser and displays the latest deployed UI (including “She said yes” on the success screen).

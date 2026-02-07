@@ -1,84 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Fix deployment failure and redeploy Valentine page",
-  "priority": "high",
+  "title": "Publish latest changes to production (icp0.io)",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-10",
-      "text": "Investigate the current hosted-environment build/deployment failure, fix the underlying issue (frontend build and/or canister deploy), and rerun the deployment so the latest Valentine page is successfully published.",
-      "target": "both",
+      "id": "REQ-1",
+      "text": "Publish the current app changes by redeploying the project to production and verify the live site is reachable at https://romanticproposal.icp0.io.",
+      "target": "unknown",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Retry"
+          "Publish changes"
         ]
       },
       "acceptanceCriteria": [
-        "A clean production build completes successfully without errors.",
-        "Deployment completes successfully in the hosted environment (no deployment failure).",
-        "The deployed site loads and functions as expected (Valentine prompt, evasive \"No\" button behavior, and the \"She said yes\" success state with the meme image)."
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "text": "Ensure the deployment output is reachable at the intended icp0.io subdomain and matches the configured domain value: https://Romanticproposal.icp0.io.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Retry"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Visiting https://Romanticproposal.icp0.io loads the app successfully.",
-        "The page shows the Valentine prompt UI and works on both desktop and iPad Chrome (including touch interaction for the evasive \"No\" button)."
-      ]
-    },
-    {
-      "id": "REQ-12",
-      "text": "Update or restore frontend/DEPLOYMENT.md so it contains complete, step-by-step production build and redeploy instructions (in English), including how to rerun deployment after a failure and how to validate the icp0.io subdomain using the existing validation script.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "Retry"
-        ]
-      },
-      "acceptanceCriteria": [
-        "frontend/DEPLOYMENT.md contains clear, complete production build and redeploy steps.",
-        "Documentation includes a section explaining how to validate a subdomain using frontend/scripts/validate-icp0-subdomain.mjs.",
-        "Documentation includes a short troubleshooting section for common build/deploy failures and how to retry."
+        "A production deployment is executed using the project’s standard deployment workflow.",
+        "https://romanticproposal.icp0.io loads successfully in a browser and displays the latest UI (including the success screen heading text \"She said yes\").",
+        "No deployment/build errors remain blocking the publish step."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (read-only UI components).",
-    "Do not modify any files listed under frontend.immutablePaths in SYSTEM_CONTEXT.",
-    "Keep all backend logic in the single Motoko actor (backend/main.mo); add migration code only if persistent state changes are required.",
-    "Use English for any user-facing text."
+    "Do not change the single-actor backend architecture.",
+    "Do not edit files under frontend/src/components/ui or other frontend immutablePaths."
   ],
   "nonGoals": [
-    "Adding new Valentine interactions or changing the existing copy/layout beyond what is required to fix deployment and documentation.",
-    "Introducing new backend services, external databases, or third-party authentication providers (Internet Identity only)."
+    "Adding new UI features or changing app behavior beyond what is necessary to publish the current state.",
+    "Introducing new backend APIs or persistence."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }
